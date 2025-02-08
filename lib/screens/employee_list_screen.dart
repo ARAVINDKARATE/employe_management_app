@@ -118,7 +118,7 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
         ),
       ),
       onDismissed: (direction) {
-        context.read<EmployeeBloc>().add(DeleteEmployee(employee.id!));
+        confirmDelete(employee);
       },
       child: ListTile(
         title: Text(
@@ -160,5 +160,28 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
       if (word.isEmpty) return ''; // Handle empty words
       return word.characters.first.toUpperCase() + word.characters.skip(1).string;
     }).join(' ');
+  }
+
+  void confirmDelete(Employee employee) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text("Delete Employee"),
+        content: Text("Are you sure you want to delete this employee?"),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text("Cancel"),
+          ),
+          TextButton(
+            onPressed: () {
+              context.read<EmployeeBloc>().add(DeleteEmployee(employee.id!));
+              Navigator.popAndPushNamed(context, '/');
+            },
+            child: Text("Delete", style: TextStyle(color: Colors.red)),
+          ),
+        ],
+      ),
+    );
   }
 }

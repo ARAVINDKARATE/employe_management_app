@@ -83,13 +83,16 @@ class _AddEditEmployeeScreenState extends State<AddEditEmployeeScreen> {
         backgroundColor: Color(0xFF1DA1F2),
         actions: widget.employee != null
             ? [
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Image.asset(
-                    'assets/delete_icon.png',
-                    width: 24,
-                    height: 24,
-                    color: Colors.white,
+                GestureDetector(
+                  onTap: () => confirmDelete(),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Image.asset(
+                      'assets/delete_icon.png',
+                      width: 24,
+                      height: 24,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
                 // IconButton(
