@@ -47,13 +47,14 @@ class _AddEditEmployeeScreenState extends State<AddEditEmployeeScreen> {
     );
   }
 
-  Future<void> _pickDate(BuildContext context, bool isJoinDate) async {
+  Future<void> _pickDate(BuildContext context, bool isJoinDate, {DateTime? joinDate}) async {
     DateTime initialDate = isJoinDate ? (_joinDate ?? DateTime.now()) : (_leaveDate ?? DateTime.now());
 
     DateTime? pickedDate = await DatePicker.show(
       context: context,
       initialDate: initialDate,
       isJoinDate: isJoinDate,
+      joinDate: joinDate,
     );
 
     if (pickedDate != null) {
@@ -179,7 +180,7 @@ class _AddEditEmployeeScreenState extends State<AddEditEmployeeScreen> {
                         ),
                         Expanded(
                           child: ElevatedButton.icon(
-                            onPressed: () => _pickDate(context, false),
+                            onPressed: () => _pickDate(context, false, joinDate: _joinDate),
                             icon: Image.asset(
                               'assets/calendar_icon.png',
                               width: 16,

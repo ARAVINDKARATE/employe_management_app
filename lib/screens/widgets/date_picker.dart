@@ -109,7 +109,7 @@ class DatePicker {
                         padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                       ),
                       onPressed: () {
-                        if (!isJoinDate && tempDate != null && tempDate!.isBefore(DateTime.now())) {
+                        if (!isJoinDate && tempDate != null && tempDate!.isBefore(joinDate ?? DateTime.now())) {
                           Fluttertoast.showToast(
                             msg: "Leave date cannot be before joining date",
                             toastLength: Toast.LENGTH_SHORT,
