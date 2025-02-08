@@ -19,7 +19,7 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
     return BlocProvider(
       create: (context) => EmployeeBloc(repository: EmployeeRepository())..add(LoadEmployees()),
       child: Scaffold(
-        appBar: AppBar(title: Text('Employee List')),
+        appBar: AppBar(automaticallyImplyLeading: false, title: Text('Employee List')),
         body: BlocBuilder<EmployeeBloc, EmployeeState>(
           builder: (context, state) {
             if (state is EmployeeLoading) {
