@@ -115,6 +115,7 @@ class _AddEditEmployeeScreenState extends State<AddEditEmployeeScreen> {
                       controller: _nameController,
                       decoration: InputDecoration(
                         labelText: 'Employee Name',
+                        labelStyle: TextStyle(color: Colors.grey),
                         prefixIcon: Icon(Icons.person_outline, color: iconColor),
                         border: customBorder,
                         enabledBorder: customBorder,
@@ -133,6 +134,7 @@ class _AddEditEmployeeScreenState extends State<AddEditEmployeeScreen> {
                           controller: _roleController,
                           decoration: InputDecoration(
                             labelText: 'Select Role',
+                            labelStyle: TextStyle(color: Colors.grey),
                             prefixIcon: Icon(Icons.work_outline, color: iconColor),
                             border: customBorder,
                             enabledBorder: customBorder,

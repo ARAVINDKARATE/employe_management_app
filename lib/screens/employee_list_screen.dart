@@ -149,7 +149,6 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset('assets/no_employee_found.png', width: 200, height: 200),
-          Text('No employee records found', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
         ],
       ),
     );
