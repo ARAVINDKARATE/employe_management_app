@@ -110,13 +110,24 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
         color: Colors.red,
         alignment: Alignment.centerRight,
         padding: EdgeInsets.symmetric(horizontal: 20),
-        child: Icon(Icons.delete, color: Colors.white),
+        child: Image.asset(
+          'assets/delete_icon.png',
+          width: 24,
+          height: 24,
+          color: Colors.white,
+        ),
       ),
       onDismissed: (direction) {
         context.read<EmployeeBloc>().add(DeleteEmployee(employee.id!));
       },
       child: ListTile(
-        title: Text(employee.name),
+        title: Text(
+          capitalizeEachWord(employee.name),
+          style: const TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
         subtitle: Text("${employee.role}\nFrom $startDate - $leaveDate"),
         isThreeLine: true,
         onTap: () async {
@@ -142,5 +153,12 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
         ],
       ),
     );
+  }
+
+  String capitalizeEachWord(String text) {
+    return text.split(' ').map((word) {
+      if (word.isEmpty) return ''; // Handle empty words
+      return word.characters.first.toUpperCase() + word.characters.skip(1).string;
+    }).join(' ');
   }
 }

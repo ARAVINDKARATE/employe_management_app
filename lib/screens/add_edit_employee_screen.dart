@@ -83,10 +83,19 @@ class _AddEditEmployeeScreenState extends State<AddEditEmployeeScreen> {
         backgroundColor: Color(0xFF1DA1F2),
         actions: widget.employee != null
             ? [
-                IconButton(
-                  icon: Icon(Icons.delete, color: Colors.white),
-                  onPressed: () => _confirmDelete(),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Image.asset(
+                    'assets/delete_icon.png',
+                    width: 24,
+                    height: 24,
+                    color: Colors.white,
+                  ),
                 ),
+                // IconButton(
+                //   icon: Icon(Icons.delete, color: Colors.white),
+                //   onPressed: () => _confirmDelete(),
+                // ),
               ]
             : null,
       ),
@@ -244,7 +253,7 @@ class _AddEditEmployeeScreenState extends State<AddEditEmployeeScreen> {
     );
   }
 
-  void _confirmDelete() {
+  void confirmDelete() {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(

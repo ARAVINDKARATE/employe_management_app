@@ -75,6 +75,7 @@ flutter:
   assets:
       - assets/no_employee_found.png
       - assets/calendar_icon.png
+      - assets/delete_icon.png
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
