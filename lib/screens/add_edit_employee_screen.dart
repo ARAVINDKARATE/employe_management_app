@@ -201,54 +201,54 @@ class _AddEditEmployeeScreenState extends State<AddEditEmployeeScreen> {
               ),
             ),
           ),
-          Container(
-            padding: EdgeInsets.all(16.0),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 5)],
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                TextButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Theme.of(context).colorScheme.secondary,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
-                    padding: EdgeInsets.symmetric(horizontal: 18, vertical: 8),
-                  ),
-                  onPressed: () => Navigator.pop(context),
-                  child: Text("Cancel", style: TextStyle(color: Theme.of(context).colorScheme.primary)),
-                ),
-                SizedBox(width: 15),
-                ElevatedButton(
-                  onPressed: () {
-                    _joinDate ??= DateTime.now();
-                    if (_formKey.currentState!.validate()) {
-                      final employee = Employee(
-                        id: widget.employee?.id,
-                        name: _nameController.text,
-                        role: _roleController.text,
-                        joinDate: _joinDate!,
-                        leaveDate: _leaveDate,
-                      );
-                      if (widget.employee == null) {
-                        context.read<EmployeeBloc>().add(AddEmployee(employee));
-                      } else {
-                        context.read<EmployeeBloc>().add(UpdateEmployee(employee));
-                      }
-                      Navigator.popAndPushNamed(context, '/');
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Theme.of(context).primaryColor,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                  ),
-                  child: Text("Save"),
-                ),
-              ],
-            ),
-          ),
         ],
+      ),
+      bottomNavigationBar: Container(
+        padding: EdgeInsets.all(16.0),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 5)],
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            TextButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Theme.of(context).colorScheme.secondary,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
+                padding: EdgeInsets.symmetric(horizontal: 18, vertical: 8),
+              ),
+              onPressed: () => Navigator.pop(context),
+              child: Text("Cancel", style: TextStyle(color: Theme.of(context).colorScheme.primary)),
+            ),
+            SizedBox(width: 15),
+            ElevatedButton(
+              onPressed: () {
+                _joinDate ??= DateTime.now();
+                if (_formKey.currentState!.validate()) {
+                  final employee = Employee(
+                    id: widget.employee?.id,
+                    name: _nameController.text,
+                    role: _roleController.text,
+                    joinDate: _joinDate!,
+                    leaveDate: _leaveDate,
+                  );
+                  if (widget.employee == null) {
+                    context.read<EmployeeBloc>().add(AddEmployee(employee));
+                  } else {
+                    context.read<EmployeeBloc>().add(UpdateEmployee(employee));
+                  }
+                  Navigator.popAndPushNamed(context, '/');
+                }
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Theme.of(context).primaryColor,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+              ),
+              child: Text("Save"),
+            ),
+          ],
+        ),
       ),
     );
   }
